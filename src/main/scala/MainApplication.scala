@@ -50,7 +50,7 @@ object MainApplication extends JFXApp {
   val paneList: List[Pane] = (0 until 16).map(_ => Pane(
     ".\\src\\main\\resources\\silence.mp3",
     new Button("\t\t\n\n\n\n\n"),
-    "#fafafa"
+    "#e6e6e6"
   )).toList
 
   val keyCodeToPaneMap = (keyList zip paneList).toMap
