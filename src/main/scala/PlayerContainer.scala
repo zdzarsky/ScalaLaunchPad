@@ -1,5 +1,7 @@
 import java.io.File
 
+import scalafx.scene.control.Alert
+import scalafx.scene.control.Alert.AlertType
 import scalafx.scene.input.{KeyCode, KeyEvent}
 import scalafx.scene.media._
 
@@ -14,7 +16,7 @@ class PlayerContainer(sources: List[String], keys: List[KeyCode]) {
 
   def play(event: KeyEvent): Unit = {
     try {
-      playerRestart(playerFromOption(players.get(event.code)))
+      playerRestart(players(event.code))
     } catch {
       case e: NoSuchElementException => throw new NoSuchElementException
     }
@@ -26,8 +28,8 @@ class PlayerContainer(sources: List[String], keys: List[KeyCode]) {
   }
 
   def playerRestart(player: MediaPlayer): Unit = {
-    player.play()
     player.stop()
+    player.play()
   }
 
   def changeButtonSoundFile(button: KeyCode, source: String): Unit = {
