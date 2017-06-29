@@ -2,9 +2,8 @@ import java.io.File
 
 import scalafx.scene.control.Button
 import scalafx.scene.media.{Media, MediaPlayer}
-import scalafx.scene.paint.Color
 
-class Pane(path : String, button : Button, color : String){
+class Pane(path: String, button: Button, color: String) {
 
   var my_path = path
   var my_button = button
@@ -16,15 +15,15 @@ class Pane(path : String, button : Button, color : String){
   }
 
 
-  def setButtonColor(col : String): Unit ={
+  def setButtonColor(col: String): Unit = {
     my_color = "#" + col
   }
 
-  def unlightButton():Unit = {
-      my_button.style = ".button"
+  def dimButton(): Unit = {
+    my_button.style = ".button"
   }
 
-  def setPlayer(path : String): MediaPlayer ={
+  def setPlayer(path: String): MediaPlayer = {
     new MediaPlayer(new Media(new File(path).toURI.toString))
   }
 
@@ -32,4 +31,8 @@ class Pane(path : String, button : Button, color : String){
     my_mediaPlayer.stop()
     my_mediaPlayer.play()
   }
+}
+
+object Pane {
+  def apply(path: String, button: Button, color: String) = new Pane(path, button, color)
 }
